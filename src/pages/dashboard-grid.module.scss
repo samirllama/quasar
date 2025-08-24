@@ -1,0 +1,90 @@
+// src/components/layout/dashboardgrid.module.scss
+
+/*
+  Dashboard Grid Layout
+  This module defines a responsive grid-based layout for the main dashboard.
+  It uses CSS Grid to create distinct areas for different components,
+  making the structure easy to read and maintain.
+*/
+.dashboardGrid {
+  // Use a full-height container and set the background
+  min-height: 100vh;
+  min-width: 90ch;
+  background-color: var(--white);
+  color: var(--black);
+
+  display: grid;
+  // Define grid areas for a semantic layout
+  grid-template-areas:
+    "header"
+    "live-ticker"
+    "main-chart"
+    "trade-panel";
+
+  // Set the height for each row
+  grid-template-rows: auto auto 1fr auto;
+
+  // Apply a consistent gap between all grid items
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+
+  /*
+    Responsive Breakpoints
+    Adapt the grid layout for larger screens (e.g., tablets and desktops)
+    This creates a multi-column layout for a better user experience on larger devices.
+  */
+  @media (min-width: 768px) {
+    grid-template-areas:
+      "header header"
+      "live-ticker live-ticker"
+      "main-chart trade-panel";
+
+    // Adjust row and column layouts for a two-column structure
+    grid-template-rows: auto auto 1fr;
+    grid-template-columns: 3fr 1fr; // Main chart takes 3 parts, trade panel takes 1
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-areas:
+      "header header"
+      "live-ticker live-ticker"
+      "main-chart trade-panel";
+
+    grid-template-rows: auto auto 1fr;
+    grid-template-columns: 4fr 1fr; // Give more space to the main chart
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg);
+  }
+}
+
+/*
+  Grid Item Styling
+  This general style is applied to all components within the grid.
+  It gives them a card-like appearance with rounded corners and a shadow.
+*/
+.gridItem {
+  background-color: var(--transwhite);
+  border: 1px solid var(--gray);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  box-shadow: var(--box-shadow-elevated);
+}
+
+// Styles specific to each grid area
+.header {
+  grid-area: header;
+}
+
+.liveTicker {
+  grid-area: live-ticker;
+}
+
+.mainChart {
+  grid-area: main-chart;
+}
+
+.tradePanel {
+  grid-area: trade-panel;
+}

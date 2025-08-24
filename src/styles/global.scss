@@ -1,0 +1,199 @@
+@font-face {
+  font-family: iA Writer Mono;
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-mono@latest/latin-400-normal.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-mono@latest/latin-400-normal.woff)
+      format("woff");
+}
+
+@font-face {
+  font-family: iA Writer Mono;
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-mono@latest/latin-700-normal.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-mono@latest/latin-700-normal.woff)
+      format("woff");
+}
+
+@font-face {
+  font-family: iA Writer Mono;
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-mono@latest/latin-400-italic.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-mono@latest/latin-400-italic.woff)
+      format("woff");
+}
+
+@font-face {
+  font-family: iA Writer Mono;
+  font-style: italic;
+  font-display: swap;
+  font-weight: 700;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-mono@latest/latin-700-italic.woff2)
+      format("woff2"),
+    url(https://cdn.jsdelivr.net/fontsource/fonts/ia-writer-mono@latest/latin-700-italic.woff)
+      format("woff");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --white: #faf5f6;
+  --transwhite: rgba(250, 245, 246, 0.7);
+  --moretranswhite: rgba(239, 239, 239, 0.1);
+
+  --black: #252525;
+  --transblack: rgba(37, 37, 37, 0.7);
+  --moretransblack: rgba(37, 37, 37, 0.1);
+
+  --gray: #6b6b6b;
+  --highlight: #e5ffc3;
+  --red: #e4002b;
+  --green: #24d05a;
+  --pink: #eb4888;
+  --blue: #10a2f5;
+  --yellow: #e9bc3f;
+
+  --spacing-xxs: 0.25rem;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 0.75rem;
+  --box-shadow-elevated: 0 4px 12px rgba(0, 0, 0, 0.25);
+
+  --font-primary: "Inter", sans-serif;
+  --font-mono: "iA Writer Mono", monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+  line-height: 1.5;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color-scheme: light dark;
+  color: var(--transwhite);
+  background-color: var(--transblack);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  padding: 20px;
+  max-width: 70ch;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+html,
+body,
+button,
+code,
+input {
+  font-family: var(--font-mono);
+  font-weight: 400;
+}
+
+::selection {
+  background-color: var(--highlight);
+  color: var(--black);
+}
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--transblack);
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.bg-card {
+  background-color: var(--transblack);
+}
+
+.bg-elevated {
+  background-color: var(--moretransblack);
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.unselectable {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+@media (prefers-color-scheme: light) {
+  html,
+  body {
+    color: var(--transblack);
+    background-color: var(--transwhite);
+  }
+
+  a:hover {
+    color: var(--pink);
+  }
+  button {
+    background-color: var(--moretranswhite);
+  }
+}

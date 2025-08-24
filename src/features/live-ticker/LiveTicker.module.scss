@@ -1,0 +1,38 @@
+.cell_header {
+  border: 1px solid var(--transblack);
+  background-color: var(--gray);
+  color: var(--white);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  text-align: center;
+  font-family: var(--font-mono);
+}
+
+.price {
+  border: 1px solid var(--transblack);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  text-align: right;
+  font-family: var(--font-mono);
+  transition-property: background-color;
+  transition-duration: 300ms;
+}
+
+.cell {
+  border: 1px solid var(--transblack);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--black);
+}
+
+/*
+  Conditional styles for price direction.
+  These modifier classes are applied based on whether the price is 'up' or 'down'.
+*/
+.up {
+  background-color: var(--green);
+}
+
+.down {
+  background-color: var(--red);
+}
