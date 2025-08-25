@@ -43,19 +43,35 @@ const DashboardGrid: React.FC = () => {
   return (
     <div className={styles.dashboardGrid}>
       <div className={`${styles.gridItem} ${styles.header}`}>
-        <h2>Dashboard Header</h2>
+        <h2>Dashboard</h2>
       </div>
 
-      <div className={styles.gridItem}>
-        <h2>AAPL Aggregates</h2>
+      <div className={`${styles.gridItem} ${styles.stocksAggregates}`}>
+        <h2 className={styles.itemHeader}>AAPL Aggregates</h2>
         {loading ? (
           <p>Loading…</p>
         ) : (
-          <ul>
+          <ul className={styles.dataList}>
+            {/* Header row */}
+            <li className={`${styles.dataListItem} ${styles.dataListHeader}`}>
+              <span className={styles.date}>date</span>
+              <span className={styles.dataValue}>open</span>
+              <span className={styles.dataValue}>high</span>
+              <span className={styles.dataValue}>low</span>
+              <span className={styles.dataValue}>close</span>
+              <span className={styles.dataValue}>volume</span>
+            </li>
+
             {bars.map((bar) => (
-              <li key={bar.t}>
-                {new Date(bar.t).toLocaleDateString()} → O:{bar.o} H:{bar.h} L:
-                {bar.l} C:{bar.c} V:{bar.v}
+              <li key={bar.t} className={styles.dataListItem}>
+                <span className={styles.date}>
+                  {new Date(bar.t).toLocaleDateString()}
+                </span>
+                <span className={styles.dataValue}>{bar.o}</span>
+                <span className={styles.dataValue}>{bar.h}</span>
+                <span className={styles.dataValue}>{bar.l}</span>
+                <span className={styles.dataValue}>{bar.c}</span>
+                <span className={styles.dataValue}>{bar.v.toFixed(0)}</span>
               </li>
             ))}
           </ul>
@@ -71,7 +87,7 @@ const DashboardGrid: React.FC = () => {
       </div>
 
       <div className={`${styles.gridItem} ${styles.tradePanel}`}>
-        <h2> Trade Panel component</h2>
+        <h2> Trade Panel </h2>
         {/* <TradePanel /> */}
       </div>
     </div>

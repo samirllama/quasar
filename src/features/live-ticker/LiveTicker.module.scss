@@ -8,7 +8,7 @@
 }
 
 .price {
-  border: 1px solid var(--transblack);
+  border: 1px solid var(--transwhite);
   padding: var(--spacing-xs) var(--spacing-sm);
   text-align: right;
   font-family: var(--font-mono);
@@ -17,12 +17,12 @@
 }
 
 .cell {
-  border: 1px solid var(--transblack);
+  border: 1px solid var(--transwhite);
   padding: var(--spacing-xs) var(--spacing-sm);
   text-align: center;
   font-family: var(--font-mono);
   font-size: 0.9em;
-  color: var(--black);
+  color: var(--white);
 }
 
 /*
