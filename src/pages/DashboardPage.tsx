@@ -1,19 +1,11 @@
-// src/components/layout/DashboardGrid.tsx
+// src/pages/DashboardPage.tsx
 
 import React, { useState, useEffect } from "react";
 import styles from "./dashboard-grid.module.scss";
 import StockTicker from "../features/live-ticker";
 import { polygonRest } from "../lib/polygon";
 import { GetStocksAggregatesTimespanEnum } from "@polygon.io/client-js";
-
-interface Aggregate {
-  t: number; // timestamp (ms)
-  o: number; // open
-  h: number; // high
-  l: number; // low
-  c: number; // close
-  v: number; // volume
-}
+import type { Aggregate } from "../types";
 
 const DashboardGrid: React.FC = () => {
   const [bars, setBars] = useState<Aggregate[]>([]);

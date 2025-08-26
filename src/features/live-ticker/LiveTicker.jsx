@@ -8,6 +8,11 @@ const MOCK_SYMBOLS = {
   GOOG: { price: 105, timestamp: 1756070844022 },
 };
 
+const symbolMap = new Map([
+  [TSLA, { price: 250 }],
+  [AAPL, { price: 150 }],
+]);
+
 export const StockTicker = ({ updates }) => {
   const [symbols, setSymbols] = useState(MOCK_SYMBOLS);
 
