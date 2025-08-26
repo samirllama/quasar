@@ -51,11 +51,14 @@ export function useStockData(symbol: string) {
 export function useCandles(symbol: string, timeframe: TimeFrame) {
     const [candles, setCandles] = useState<Candle[]>([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
+        let isMounted = true;
         async function fetchCandles() {
             try {
-                setLoading(true);
+                if (isMounted) setLoading(true);
+                setError(null);
                 const now = new Date();
                 const { from, to, timespan, multiplier } = getTimeframeParams(timeframe, now);
 
@@ -67,18 +70,21 @@ export function useCandles(symbol: string, timeframe: TimeFrame) {
                     to
                 );
 
-                setCandles(response.results || []);
+                if (isMounted) setCandles(response.results || []);
             } catch (error) {
-                console.error('Error fetching candles:', error);
+                if (isMounted) {
+                    setError(error instanceof Error ? error.message : 'Failed to fetch candles');
+                }
             } finally {
-                setLoading(false);
+                if (isMounted) setLoading(false);
             }
         }
 
         fetchCandles();
+        return () => { isMounted = false; };
     }, [symbol, timeframe]);
 
-    return { candles, loading };
+    return { candles, loading, error };
 }
 
 export function useRealtimePrice(symbol: string) {
